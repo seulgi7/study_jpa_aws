@@ -1,0 +1,45 @@
+/* buildscript:맨 앞에 위치, 프로젝트의 플러그인 의존성 관리 */
+buildscript {
+    /* ext:전역변수 설정 */
+    ext {
+        springBootVersion = '2.1.7.RELEASE'
+    }
+    /* repositories : 각종 의존성(라이브러리)들을 어떤 원격 저장소에서 받을지를 정함. */
+    repositories {
+        //이번 프로젝트에서는 둘다 사용.
+        mavenCentral() // 이전부터 많이 사용하는 저장소.
+                        // 문제점 : 본인이 만든 라이브러리를 업로드하기 위해서는 정말 많은 과정과 설정이 필요.
+                        // --> 개발자들이 직접 만든 라이버리를 업로드 하는 것이 힘들어 점점 공유가 안되는 상호아 발생.
+        jcenter() // 최근에 나옴. mavenCentral()의 문제점을 개선하여 라이브러리 업로드를 간단하게 해줌.
+                    //또한, jcenter 에 라이브러리를 업로드하면 mavenCentral 에도 업로드 될 수 있 수 있또록 자동화 가능. --> 점점 jcenter 많이 사용.
+    }
+
+    /* dependencies:프로젝트 개발에 필요한 의존성들을 선언하는 곳. */
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+/* 플러그인 적용 : 아래 4개의 플러그인은 자바와 스프링부트 사용을 위한 필수 플러그인 */
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management' //스프링 부트의 의존성들을 관리해주는 플러그인
+
+group 'com.spring.book'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    //버전을 명시하지 않아야만 맨위에 작성한 "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"의 버전을 따라감.
+    compile('org.springframework.boot:spring-boot-starter-web')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+test {
+    useJUnitPlatform()
+}
