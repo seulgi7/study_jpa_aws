@@ -38,6 +38,7 @@ dependencies {
     //버전을 명시하지 않아야만 맨위에 작성한 "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"의 버전을 따라감.
     compile('org.springframework.boot:spring-boot-starter-web')
     testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile('org.projectlombok:lombok') //롬복 추가
 }
 
 test {
