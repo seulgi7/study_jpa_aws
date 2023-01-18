@@ -1,5 +1,5 @@
 # CHAPTER01.
-## 프로젝트 환경
+# 프로젝트 환경
     - Java : 8
     - Gradle : 4.10.2
 
@@ -8,7 +8,7 @@
 ## 2.1 테스트 코드 소개
 
 TDD와 단위 테스트(Unit Test)는 다른 이야기.
-
+햐
 ### TDD
 
 - 테스트가 주도하는 개발.
@@ -177,20 +177,13 @@ public class Application {
 ## 2.4 Hello Controller 코드를 롬복으로 전환하기
 
 ### @Getter
-
 - 선언된 모든 필드의 get 메소드를 생성해 줍니다.
 
-
-
 ### @ResponseArgsConstructor
-
 - 선언된 모든 final 필드가 포함된 생성자를 생성해 줍니다.
 - final이 없는 필드는 생성자에 포함되지 않습니다.
 
-
-
 ### assertThat
-
 - assertj라는 테스트 검증라이브러리의 검증 메소드.
 - 검증하고 싶은 대상을 메소드 인자로 받는다.
 - 메소드 체이닝이 지원되어 isEqualTo와 같이 메소드를 이어서 사용할 수 있다.
@@ -202,16 +195,24 @@ public class Application {
 > - 자동완성이 좀 더 확실하게 지원된다.
     >   - IDE에서는 CoreMatchersd와 같은 Matcher 라이브러리의 자동완성 지원이 약하다.
 
-
-
+  
 ### isEqualTo
 
 - assertj의 동등 비교 메소드.
 - assertThat에 있는 값과 isEqualTo의 값을 비교해서 같을 때만 성공.
 
-
-
 ### @RequestParam
 
 - 외부에서 API로 넘긴 파라미터를 가져오는 어노테이션.
 - 여기서는 외부에서 name (@RequestParam("name") ) 이란 이름으로 넘긴 파라미터를 메소트 파라미터 name (String name)에 저장하게 된다.
+
+### @param
+
+- API 테스트할 때 사용될 요청 파라미터를 설정한다.
+- 단, 값은 String만 허용된다.
+- 숫자/날짜 등의 데이터도 등록할 때는 문자열로 변경해야만 가능하다.
+
+### jsonPath
+
+- JSON 응답값을 필드별로 검증할 수 있는 메소드.
+- $를 기준으로 필드명을 명시한다. ex) name → $.name , amount → $.amount
