@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class HelloResponseDtoTest {
 
     @Test
-    public void lombok_fn_test(){
+    public void  lombok_fn_test(){
         //given
         String name = "test";
         int amount = 1000;
