@@ -42,7 +42,9 @@ dependencies {
     compile('com.h2database:h2')//인메모리 관계형 데이터베이스
     compile('org.springframework.boot:spring-boot-starter-mustache')//머스테치
     compile('org.springframework.boot:spring-boot-starter-oauth2-client')//스프링 시큐리티
+    compile('org.springframework.session:spring-session-jdbc') // 세션 저장소
     testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.springframework.security:spring-security-test')// 스프링 시큐리티 테스트를 위한 여러 도구 지원
 }
 
 test {
